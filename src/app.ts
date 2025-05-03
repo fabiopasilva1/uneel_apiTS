@@ -15,7 +15,7 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 app.use(compression());
 app.use(express.json());
-// app.use(strapiService.tokenVerify);
+app.use(strapiService.tokenVerify);
 app.use('/api', routes);
 
 const PORT = process.env.PORT || 3000;

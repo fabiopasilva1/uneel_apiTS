@@ -20,6 +20,7 @@ export class StrapiAuthService {
 
       return response.data.jwt;
     } catch (error) {
+      console.log(error);
       throw new Error('Usuário ou senha invalidos');
     }
   }

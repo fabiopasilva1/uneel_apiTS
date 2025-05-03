@@ -55,23 +55,23 @@ describe('StrapiAuthService', () => {
   });
 
   it('should throw error if url is not defined', () => {
-    expect(() => new StrapiAuthService(undefined as any)).toThrow('Url do Strapi não definida!');
+    expect(() => new StrapiAuthService(undefined as unknown as string)).toThrow('Url do Strapi não definida!');
   });
 
   it('should throw error if login fails', async () => {
     const service = new StrapiAuthService('http://localhost:1337');
 
-    jest.spyOn(require('axios'), 'post').mockRejectedValueOnce(new Error('fail'));
+    jest.spyOn(axios, 'post').mockRejectedValueOnce(new Error('fail'));
     await expect(service.login('user', 'wrongpass')).rejects.toThrow('Usuário ou senha invalidos');
   });
 
   it('should throw error if token is invalid', async () => {
     const service = new StrapiAuthService('http://localhost:1337');
-    const req = { headers: { authorization: 'Bearer token_invalido' } } as any;
-    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() } as any;
+    const req = { headers: { authorization: 'Bearer token_invalido' } } as Request;
+    const res = { status: jest.fn().mockReturnThis(), json: jest.fn() } as Partial<Response> as Response;
     const next = jest.fn();
 
-    jest.spyOn(require('axios'), 'get').mockResolvedValueOnce({ status: 401, statusText: 'Unauthorized' });
+    jest.spyOn(axios, 'get').mockResolvedValueOnce({ status: 401, statusText: 'Unauthorized' });
 
     await service.tokenVerify(req, res, next);
 
@@ -81,14 +81,14 @@ describe('StrapiAuthService', () => {
 
   it('should return jwt on successful login', async () => {
     const service = new StrapiAuthService('http://localhost:1337');
-    jest.spyOn(require('axios'), 'post').mockResolvedValueOnce({ data: { jwt: 'token123' } });
+    jest.spyOn(axios, 'post').mockResolvedValueOnce({ data: { jwt: 'token123' } });
     const token = await service.login('user', 'pass');
     expect(token).toBe('token123');
   });
 
   it('should throw error if login fails', async () => {
     const service = new StrapiAuthService('http://localhost:1337');
-    jest.spyOn(require('axios'), 'post').mockRejectedValueOnce(new Error('fail'));
+    jest.spyOn(axios, 'post').mockRejectedValueOnce(new Error('fail'));
     await expect(service.login('user', 'wrongpass')).rejects.toThrow('Usuário ou senha invalidos');
   });
 });
