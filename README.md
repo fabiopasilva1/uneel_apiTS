@@ -23,7 +23,7 @@ A aplicação segue princípios de orientação a objetos, possui testes automat
 1. **Clone o repositório:**
 
    ```bash
-   git clone <seu-repo>
+   git clone https://github.com/fabiopasilva1/uneel_apiTS.git
    cd uneel_apiTS
    ```
 
