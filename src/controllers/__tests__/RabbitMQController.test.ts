@@ -1,16 +1,17 @@
 import { Request, Response } from 'express';
 import { RabbitMQController } from '../RabbitmqController';
+import { RabbitMQService } from '../../services/RabbitMQService';
 
 describe('RabbitMQController', () => {
   const mockService = { sendToQueue: jest.fn().mockResolvedValue(undefined) };
-  const controller = new RabbitMQController(mockService as any);
+  const controller = new RabbitMQController(mockService as unknown as RabbitMQService);
 
   it('should respond with success when sending a valid message to a valid queue', () => {
     const req = { body: { queue: 'queue1', message: 'hello' } } as Request;
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
-    } as any as Response;
+    } as Partial<Response> as Response;
     controller.sendMessage(req, res);
     expect(res.status).toHaveBeenCalledWith(200);
     expect(res.json).toHaveBeenCalledWith({
@@ -24,7 +25,7 @@ describe('RabbitMQController', () => {
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
-    } as any as Response;
+    } as Partial<Response> as Response;
     expect(() => controller.sendMessage(req, res)).toThrow('Fila undefined ou mensagem test invalida');
   });
 
@@ -33,7 +34,7 @@ describe('RabbitMQController', () => {
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
-    } as any as Response;
+    } as Partial<Response> as Response;
     expect(() => controller.sendMessage(req, res)).toThrow('Fila queue1 ou mensagem undefined invalida');
   });
 
@@ -42,7 +43,7 @@ describe('RabbitMQController', () => {
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
-    } as any as Response;
+    } as Partial<Response> as Response;
     expect(() => controller.sendMessage(req, res)).toThrow('Fila undefined ou mensagem undefined invalida');
   });
   it('should return 500 if sendToQueue throws an error', () => {
@@ -52,12 +53,12 @@ describe('RabbitMQController', () => {
         throw error;
       }),
     };
-    const controller = new RabbitMQController(mockService as any);
+    const controller = new RabbitMQController(mockService as unknown as RabbitMQService);
     const req = { body: { queue: 'queue1', message: 'msg' } } as Request;
     const res = {
       status: jest.fn().mockReturnThis(),
       json: jest.fn(),
-    } as any as Response;
+    } as Partial<Response> as Response;
     controller.sendMessage(req, res);
     expect(res.status).toHaveBeenCalledWith(500);
     expect(res.json).toHaveBeenCalledWith({ success: false, error: 'Falha no RabbitMQ' });

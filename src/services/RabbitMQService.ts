@@ -1,4 +1,4 @@
-import amqplib, { ConsumeMessage } from 'amqplib';
+import amqplib from 'amqplib';
 
 export class RabbitMQService {
   private hostname: string;

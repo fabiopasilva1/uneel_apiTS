@@ -16,8 +16,8 @@ export class MSSQLController {
     try {
       const result = await this.mssqlService.executeQuery(sql);
       res.status(200).json({ success: true, result });
-    } catch (error: any) {
-      res.status(500).json({ success: false, error: error.message });
+    } catch (error) {
+      if (error instanceof Error) res.status(500).json({ success: false, error: error.message });
     }
   };
 }

@@ -1,4 +1,5 @@
 import { RabbitMQService } from '../RabbitMQService';
+
 import amqplib from 'amqplib';
 
 jest.mock('amqplib');
@@ -12,6 +13,7 @@ describe('RabbitMQService', () => {
         close: jest.fn(),
       }),
       close: jest.fn(),
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any);
 
     const service = new RabbitMQService(

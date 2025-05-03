@@ -18,7 +18,7 @@ export class RabbitMQController {
         message: 'Mensagem enviada ao RabbitMQ',
       });
     } catch (error) {
-      error instanceof Error && res.status(500).json({ success: false, error: error.message });
+      if (error instanceof Error) res.status(500).json({ success: false, error: error.message });
     }
   };
 }
