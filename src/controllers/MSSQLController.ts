@@ -9,7 +9,8 @@ export class MSSQLController {
   }
 
   queryDatabase = async (req: Request, res: Response) => {
-    const { sql } = req.query;
+    const { sql } = req.body || req.query;
+    console.log(`[${new Date().toISOString()}][${req.ip}] ${sql}`);
     if (!sql || typeof sql !== 'string') {
       return res.status(400).json({ success: false, error: 'SQL não informado' });
     }

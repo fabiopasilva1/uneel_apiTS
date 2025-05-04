@@ -26,6 +26,10 @@ export class StrapiAuthService {
   }
 
   tokenVerify = async (req: Request, res: Response, next: NextFunction) => {
+    // console.log(req);
+    if (req.url === '/api/strapi/login') {
+      return next();
+    }
     try {
       const jwt = req.headers.authorization && req.headers.authorization.split(' ')[1];
       if (!jwt) {
