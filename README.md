@@ -185,3 +185,5 @@ app.ts
 - O projeto está pronto para deploy em ambientes Docker e cloud.
 
 ---
+
+[![CI](https://github.com/fabiopasilva1/uneel_apiTS/actions/workflows/ci.yml/badge.svg)](https://github.com/fabiopasilva1/uneel_apiTS/actions/workflows/ci.yml)
