@@ -10,5 +10,7 @@ const mssqlController = new MSSQLController(mssqlService);
 
 router.get('/query', mssqlController.queryDatabase);
 router.post('/query', mssqlController.queryDatabase);
+router.post('/spquery', mssqlController.spquery);
+router.post('/', mssqlController.spquery);
 
 export default router;
