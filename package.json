@@ -1,6 +1,6 @@
 {
   "name": "api-typescript-rabbitmq-mssql-strapi",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "main": "dist/app.js",
   "scripts": {
     "start": "node dist/app.js",
