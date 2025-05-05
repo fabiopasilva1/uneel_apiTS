@@ -1,0 +1,23 @@
+services:
+  uneel-api:
+    container_name: uneel-api
+    build:
+      context: .
+    image: ts-app:latest
+    restart: unless-stopped
+    init: true
+    env_file: ./.env # Uncomment if .env file exists
+    ports:
+      - ${PORT}:${PORT} # Expose API port as per Dockerfile/README
+    networks:
+      - postgres_default
+    volumes:
+      - ./:/app
+      - ./.env:/app/.env
+networks:
+  postgres_default:
+    external: true
+
+volumes:
+  uneel-api:
+    driver: local
