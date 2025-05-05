@@ -1,0 +1,32 @@
+export interface ITelefoneModelConstructorParams {
+  HISTORICO_TELEFONES_ID: string;
+  HISTORICO_ENDERECOS_ID: string;
+  CONTATOS_ID: string;
+  DDD: string;
+  TELEFONE: string;
+  TIPO_TELEFONE: number;
+  PRIORIDADE_TELEFONE: number;
+  CADASTRO_ID: string;
+  DT_INCLUSAO: string;
+  DT_ATUALIZACAO: string;
+  FONE_NOTA: string;
+  DT_INFORMACAO: string;
+  NSU: string;
+  ORIGEM_SERASA: string;
+  CNPJ_INFORMANTE: string;
+  BLOQUEADO: string;
+  DT_BLOQUEIO: string;
+  LOGON_BLOQUEIO: string;
+  DUPLICADO_MAIS_15_VEZES: string;
+  CLASSIFICACAO: string;
+  PRIORIDADE: string;
+  DT_METRALHADORA: string;
+  PUBLICO: string;
+  COMPARTILHADA: string;
+  id_FINALIDADE: string;
+  de_MEIO_CAPTACAO_FORNECEDOR: string;
+  ID_LINK_FORNECEDOR: string;
+  de_FINALIDADE_FORNECEDOR: string;
+  dt_FINALIDADE_FORNECEDOR: string;
+  COMUNICADO_INADIMPLENCIA: string;
+}

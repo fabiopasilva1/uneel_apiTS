@@ -7,12 +7,14 @@ export class RabbitMQController {
     this.rabbitService = rabbitService;
   }
   sendMessage = (req: Request, res: Response) => {
-    const { queue, message } = req.body;
-    if (!message || !queue) {
-      throw new Error(`Fila ${queue} ou mensagem ${message} invalida`);
+    const { job } = req.body;
+    const message = JSON.stringify({ ...req.body, job });
+
+    if (!message || !job) {
+      throw new Error(`Fila ${job} ou mensagem ${message} invalida`);
     }
     try {
-      this.rabbitService.sendToQueue(queue, message);
+      this.rabbitService.sendToQueue(job, message);
       res.status(200).json({
         success: true,
         message: 'Mensagem enviada ao RabbitMQ',

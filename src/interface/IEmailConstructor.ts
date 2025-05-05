@@ -1,0 +1,30 @@
+export interface IEmailConstructor {
+  ID_EMAIL: string;
+  CONTATOS_ID: string;
+  EMAIL: string;
+  EMAIL1: string;
+  EMAIL2: string;
+  EMAIL3: string;
+  PRIORIDADE: string;
+  EMAIL_SCORE: string;
+  EMAIL_PESSOAL: string;
+  EMAIL_DUPLICADO: string;
+  BLACKLIST: string;
+  ESTRUTURA: string;
+  STATUS_VT: string;
+  DOMINIO: string;
+  MAPAS: string;
+  PESO: string;
+  CADASTRO_ID: string;
+  DT_INCLUSAO: string;
+  EMAIL_PROCON: string;
+  COMUNICADO_POSITIVO: string;
+  EID: string;
+  CNPJ_INFORMANTE: string;
+  ID_FINALIDADE: string;
+  dt_FINALIDADE_FORNECEDOR: string;
+  de_MEIO_CAPTACAO_FORNECEDOR: string;
+  EMAIL_PRINCIPAL: string;
+  de_FINALIDADE_FORNECEDOR: string;
+  COMUNICADO_INADIMPLENCIA: string;
+}

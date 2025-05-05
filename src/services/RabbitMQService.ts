@@ -27,11 +27,9 @@ export class RabbitMQService {
   }
 
   async sendToQueue(queue: string, message: string) {
-    const msg = JSON.stringify(message);
-
     const { channel, conn } = await this.connector();
     await channel.assertQueue(queue, { durable: true });
-    channel.sendToQueue(queue, Buffer.from(msg));
+    channel.sendToQueue(queue, Buffer.from(message));
 
     await channel.close();
     await conn.close();

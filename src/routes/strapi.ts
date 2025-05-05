@@ -6,6 +6,6 @@ const router = Router();
 
 const strapiController = new StrapiController(strapiService);
 
-router.post('/login', strapiController.login);
+router.post('/', strapiController.login);
 
 export default router;

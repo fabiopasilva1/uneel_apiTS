@@ -6,6 +6,6 @@ const router = Router();
 
 const rabbitController = new RabbitMQController(rabbitService);
 
-router.post('/send', rabbitController.sendMessage);
+router.post('/', rabbitController.sendMessage);
 
 export default router;
