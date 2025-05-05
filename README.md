@@ -232,3 +232,5 @@ Isso irá:
 - Para acessar o painel do Strapi: http://localhost:1337
 
 ---
+
+[![Publish Docker image](https://github.com/fabiopasilva1/uneel_apiTS/actions/workflows/docker-image.yml/badge.svg)](https://github.com/fabiopasilva1/uneel_apiTS/actions/workflows/docker-image.yml)
